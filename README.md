@@ -12,12 +12,15 @@ So what we're looking for is a neat way of either returning a value if an operat
 
 Either classes are too generic, as are Scala-style tuples. Option classes are too limited. Raising Exceptions is a bit heavy-handed. Presenting, then, ok_nok.
 
+##Installation
+As per any gem, add `gem 'ok_nok'` to your gemfile and `bundle` yourself, or just run `gem install ok_nok`
+
 ##Usage
 An ok_nok function always returns an instance of OkNok, whose status is set to either `ok` or `nok` (not ok). `ok` and `nok` methods monkey-patched into the Object class make this easy, e.g.:
 
     def multiple_foos(multiplier)
-      if (inted = Integer(multiplier) rescue false)
-        ok("foo" * inted)
+      if (intified = Integer(multiplier) rescue false)
+        ok("foo" * intified)
       else
         nok("'#{multiplier}' can't be converted to an Integer so can't be used to multiply foo")
       end
@@ -32,22 +35,36 @@ At the most basic level you can then query the OkNok object about its status, li
       puts "Uh-Oh! #{result.value}"
     end
     
-But OkNoks also enable other, slightly more powerful control flow structures, e.g.:
+But OkNoks also enable other, slightly more convenient control structures, e.g.:
 
-    result = multiple_foos(gets).or_if_nok do |nok|
+    result = multiple_foos(gets).return_ok_or_if_nok do |nok_value|
       # The code here only gets executed if multiple_foos is not ok
     end
-     
-    # result will be nil if multiple_foos is not_ok
+    
+    # result will be nil if multiple_foos returns a nok
     
 Also you can do:
 
-    multiple_foos(gets).ok {|ok| 
+    multiple_foos(gets).ok {|ok_value| 
       #This block gets called if multiple_foos is ok 
-    }.nok {|nok| 
+    }.nok {|nok_value| 
       #This block gets called if multiple_foos is not ok
     }
     
+You can wrap a block in an OkNok, if you specify what a nok result looks like:
+
+    result = OkNok.nok_if(nil, "No 'e' was found") do
+      gets.index("e")
+    end
+    
+Finally, you can wrap a block in an OkNok and have it return a nok only if an exception is raised
+
+    result = OkNok.nok_if_exception("Uh-oh, my block raised an exception") do
+      Integer(gets)
+    end
+
+Note that in the above examples the nok value has been an error message string. Of course, this could be a symbol, a Proc, or any sort of object that helps you deal with not-ok scenarios.
+
 
 ##Licence
 Licensed under the MIT licence.
