@@ -37,11 +37,11 @@ At the most basic level you can then query the OkNok object about its status, li
     
 But OkNoks also enable other, slightly more convenient control structures, e.g.:
 
-    result = multiple_foos(gets).return_ok_or_if_nok do |nok_value|
+    result = multiple_foos(gets).value_or_if_nok do |nok_value|
       # The code here only gets executed if multiple_foos is not ok
     end
     
-    # result will be nil if multiple_foos returns a nok
+    # result will be either the ok value, or the return value of the block
     
 Also you can do:
 
@@ -63,9 +63,8 @@ Finally, you can wrap a block in an OkNok and have it return a nok only if an ex
       Integer(gets)
     end
 
-Note that in the above examples the nok value has been an error message string. Of course, this could be a symbol, a Proc, or any sort of object that helps you deal with not-ok scenarios.
+Note that in the above examples the nok value has been a user-friendly error message string. Of course, this could be a L10n key, a symbol, a Proc, or any sort of object that helps you deal with not-ok scenarios.
 
 
 ##Licence
 Licensed under the MIT licence.
-
