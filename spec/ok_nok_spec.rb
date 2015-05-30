@@ -14,11 +14,11 @@ describe OkNok do
       expect(subject).to be_an(OkNok)
     end
     
-    it 'should set status to "ok"' do
+    it 'sets status to "ok"' do
       expect(subject.status).to be OkNok::OK
     end
     
-    it 'should keep the value passed in' do
+    it 'keeps the value passed in' do
       expect(subject.value).to be value_passed_in
     end
   end
@@ -30,11 +30,11 @@ describe OkNok do
       expect(subject).to be_an(OkNok)
     end
     
-    it 'should set status to "nok"' do
+    it 'sets status to "nok"' do
       expect(subject.status).to be OkNok::NOK
     end
     
-    it 'should keep the value passed in' do
+    it 'keeps the value passed in' do
       expect(subject.value).to be value_passed_in
     end
   end 
@@ -67,7 +67,7 @@ describe OkNok do
         expect(subject).to be_nok
       end
       
-      it "should assign the provided value to the nok" do
+      it "assigns the provided value to the nok" do
         expect(subject.value).to eq provided_nok_value
       end
     end
@@ -87,7 +87,7 @@ describe OkNok do
         expect(subject).to be_ok
       end
       
-      it "should assign the block return value to the ok" do
+      it "assigns the block return value to the ok" do
         expect(subject.value).to eq ok_block_return_value
       end
     end    
@@ -119,7 +119,7 @@ describe OkNok do
         expect(subject).to be_ok
       end
       
-      it "should assign the block return value to the ok" do
+      it "assigns the block return value to the ok" do
         expect(subject.value).to eq ok_block_return_value
       end
     end
@@ -138,7 +138,7 @@ describe OkNok do
         expect(subject).to be_nok
       end
       
-      it "should assign the provided return value to the nok" do
+      it "assigns the provided return value to the nok" do
         expect(subject.value).to eq provided_nok_value
       end
     end
