@@ -15,8 +15,7 @@ So what we're looking for is a neat way of either returning a value if an operat
 Either classes are too generic, as are Scala-style tuples. Option classes are too limited. Raising Exceptions is a bit heavy-handed. Presenting, then, ok_nok.
 
 ##Installation
-(Coming soon)
-As per any gem, add `gem 'ok_nok'` to your gemfile and `bundle` yourself, or just run `gem install ok_nok`
+As per any gem published on RubyGems, add `gem 'ok_nok'` to your gemfile and do a command line `bundle`, or just run `gem install ok_nok`.
 
 ##Usage
 An ok_nok function always returns an instance of OkNok, whose status is set to either `ok` or `nok` (not ok). `ok` and `nok` methods monkey-patched into the Object class make this easy, e.g.:
