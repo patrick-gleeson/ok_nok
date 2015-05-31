@@ -1,6 +1,8 @@
 # ok_nok
 A utility for adding a variant of functional-style Either return values to Ruby code.
 
+[![Codeship Status for patrick-gleeson/ok_nok](https://www.codeship.io/projects/e971b5a0-e9b3-0132-e2ca-4602e60b2e9f/status?branch=master)](https://www.codeship.io/projects/82985)
+
 ##Rationale
 Functional programming includes the concept of the Either, a return value that has a Left or a Right. Traditionally a populated Left value represents failure, and can contain information about the failure and a populated Right represents success.
 That's nicely generic, but it's also hard to read and unintuitive unless you're used to the syntax.
@@ -13,6 +15,7 @@ So what we're looking for is a neat way of either returning a value if an operat
 Either classes are too generic, as are Scala-style tuples. Option classes are too limited. Raising Exceptions is a bit heavy-handed. Presenting, then, ok_nok.
 
 ##Installation
+(Coming soon)
 As per any gem, add `gem 'ok_nok'` to your gemfile and `bundle` yourself, or just run `gem install ok_nok`
 
 ##Usage
